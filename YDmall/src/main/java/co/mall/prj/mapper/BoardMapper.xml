@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.mall.prj.mapper.BoardMapper">
+
+	<select id="noticeSelectList"
+		resultType="co.mall.prj.board.service.BoardVO">
+		SELECT * FROM BOARD ORDER BY BOARD_ID DESC
+	</select>
+	
+		<select id="noticeSelect"
+		resultType="co.mall.prj.board.service.BoardVO">
+		SELECT * FROM BOARD WHERE BOARD_ID = #{boardId}
+	</select>
+		
+		<select id="reviewSelectList"
+		resultType="co.mall.prj.board.service.BoardVO">
+		SELECT * FROM BOARD ORDER BY BOARD_ID DESC
+	</select>
+
+	<select id="boardSelect"
+		resultType="co.mall.prj.board.service.BoardVO">
+		SELECT * FROM BOARD WHERE BOARD_ID = #{boardId}
+	</select>
+
+	<insert id="boardInsert">
+		<selectKey keyProperty="boardId" resultType="int"
+			order="BEFORE">
+			SELECT CASE WHEN MAX(BOARD_ID) IS NULL THEN 1 ELSE MAX(BOARD_ID) + 1 END AS ID
+			FROM BOARD
+		</selectKey>
+		INSERT INTO BOARD VALUES
+		(#{boardId},#{memberId},to_char(#{boardDate}),#{boardTitle},#{boardContent},0,#{boardAttach},#{boardAttachDir},{#boardRole})
+	</insert>
+
+	<update id="boardUpdate">
+		UPDATE board
+		<set>
+			<if test="boardId != null">BOARD_ID = #{boardId},</if>
+			<if test="memberId != null">MEMBER_ID = #{memberId},</if>
+			<if test="boardDate != null">BOARD_DATE = to_char(#{boardDate}),</if>
+			<if test="boardTitle != null">BOARD_TITLE = #{boardTitle},</if>
+			<if test="boardContent != null">BOARD_CONTENT = #{boardContent},</if>
+			<if test="boardAttach != null">BOARD_ATTACH = #{boardAttach},</if>
+			<if test="boardAttachDir != null">BOARD_ATTACH_DIR = #{boardAttachDir}</if>
+		</set>
+		WHERE BOARD_ID = #{boardId}
+	</update>
+
+	<delete id="boardDelete">
+		DELETE FROM BOARD WHERE board_ID = #{boardId}
+	</delete>
+
+	<update id="boardHitUpdate" parameterType="int">
+		UPDATE BOARD SET BOARD_HIT = BOARD_HIT + 1 WHERE BOARD_ID = #{id}
+	</update>
+
+	<select id="boardSearchList" resultType="co.mall.prj.board.service.BoardVO">
+		
+
+	</select>
+
+</mapper>
