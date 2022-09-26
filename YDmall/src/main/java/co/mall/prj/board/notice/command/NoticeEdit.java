@@ -1,6 +1,5 @@
 package co.mall.prj.board.notice.command;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import co.mall.prj.board.service.BoardService;
 import co.mall.prj.board.service.BoardServiceImpl;
 import co.mall.prj.board.service.BoardVO;
 import co.mall.prj.common.Command;
@@ -23,7 +23,7 @@ public class NoticeEdit implements Command {
 		
 		// 게시글 수정
 		
-		BoardServiceImpl dao = new BoardServiceImpl();
+		BoardService dao = new BoardServiceImpl();
 		BoardVO vo = new BoardVO();
 		String viewPage = "board/boardError";
 		String filename="";
@@ -42,8 +42,7 @@ public class NoticeEdit implements Command {
 			vo.setBoardDate(multi.getParameter("boardDate"));
 			vo.setBoardTitle(multi.getParameter("boardTitle"));
 			vo.setBoardContent(multi.getParameter("boardContent"));
-			vo.setBoardAttach(originalFileName);
-			vo.setBoardAttachDir(saveFolder+File.separator+filename);
+			vo.setBoardContent(multi.getParameter("boardRole"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -119,20 +119,24 @@
 										<c:forEach items="${list }" var="n">
 											<tr onMouseover="this.style.backgroundColor='yellow';"
 												onMouseout="this.style.backgroundColor='white';"
-												onclick="selectNotice('${n.boardId }')">
-												<td align="center" id="id">${n.boardId }</td>
+												onclick="selectNotice('${n.boardId}','${n.boardRole}')">
+												<td align="center">${n.boardId }</td>
 												<td>${n.boardTitle }</td>
 												<td align="center">${n.memberId }</td>
 												<td align="center">${n.boardDate }</td>
 												<td align="center">${n.boardHit }</td>
-												<td align="center" type="hidden">${n.boardRole }</td> <!-- 게시판 타입 -->
+											
 											</tr>
 										</c:forEach>
 									</c:if>
 								</tbody>
 			<div>
 			<form id="frm" action="noticeSelect.yd" method="post">
+				<input type="hidden" id="id" name="id">
+				<input type="hidden" id="role" name="role">
+			<%-- <c:if test="${not empty id}"> --%>
 				<button type="button" onclick="location.href='noticeWriteForm.yd'" style="float: right">글쓰기</button>
+				<%-- </c:if>  --%>
 			</form>
 		</div>
 							</table>
@@ -186,8 +190,9 @@
 		
 		<script type="text/javascript">
 	
-	function selectNotice(id) {
+	function selectNotice(id,role) {
 		document.getElementById("id").value=id;
+		document.getElementById("role").value=role;
 		frm.submit();
 	}
 	</script>

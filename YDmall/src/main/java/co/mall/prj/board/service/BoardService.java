@@ -13,6 +13,5 @@ public interface BoardService {
 	
 	void boardHitUpdate(int id);
 
-	List<BoardVO> boardSearchList(String key, String val);	// 게시글 검색
 	
 }

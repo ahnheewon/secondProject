@@ -51,9 +51,9 @@ public class FrontController extends HttpServlet {
 		map.put("/noticeSelect.yd", new NoticeSelect()); // 
 		map.put("/noticeWriteForm.yd", new NoticeWriteForm());
 		map.put("/noticeInsert.yd", new NoticeInsert());
-		map.put("/noticeEditForm.yd", new NoticeEditForm()); // 
-		map.put("/noticeEdit.yd", new NoticeEdit()); // 
-		map.put("/noticeDelete.yd", new NoticeDelete()); // 
+		map.put("/boardEditForm.yd", new NoticeEditForm()); // 
+		map.put("/boardEdit.yd", new NoticeEdit()); // 
+		map.put("/boardDelete.yd", new NoticeDelete()); // 
 		
 		map.put("/shop.yd", new Shop());
 		map.put("/cart.yd", new Cart());

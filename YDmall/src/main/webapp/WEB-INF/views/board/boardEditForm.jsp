@@ -20,7 +20,7 @@
 					<table border="1">
 						<tr>
 							<th width="100">작성자</th>
-							<td width="100" align="center">${vo.boardWriter }</td>
+							<td width="100" align="center">${vo.memberId }</td>
 							<th width="100">작성일자</th>
 							<td width="100" align="center"><input type="date"
 								id="boardDate" name="boardDate" value="${vo.boardDate }">
@@ -37,23 +37,21 @@
 						<tr>
 							<th>내용</th>
 							<td colspan="5"><textarea rows="10" cols="80"
-									id="boardSubject" name="boardSubject">${vo.boardSubject }</textarea>
+									id="boardContent" name="boardContent">${vo.boardContent }</textarea>
 							</td>
 						</tr>
 
-						<tr>
-							<th>첨부파일</th>
-							<td colspan="5"><input type="file" id="file" name="file"
-								value="${vo.boardAttach}"></td>
-						</tr>
 					</table>
 				</div>
 				<br>
 
 				<div>
 					<input type="hidden" id="boardId" name="boardId"
-						value="${vo.boardId }"> <input type="submit" value="수정">&nbsp;&nbsp;
-					<input type="button" onclick="location.href='boardSelectList.yd'"
+						value="${vo.boardId }"> 
+						<input type="hidden" id="boardRole" name="boardRole"
+						value="${vo.boardRole }">
+						<input type="submit" value="수정">&nbsp;&nbsp;
+					<input type="button" onclick="location.href='noticeSelectList.yd'"
 						value="목록">
 				</div>
 			</form>

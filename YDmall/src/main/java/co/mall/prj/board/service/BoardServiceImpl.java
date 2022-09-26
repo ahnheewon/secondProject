@@ -20,13 +20,13 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public BoardVO boardSelect(BoardVO vo) {
 	//	BoardHitUpdate(vo.getBoardId());
-		return map.noticeSelect(vo);
+		return map.boardSelect(vo);
 	}
 
 	@Override
 	public int boardInsert(BoardVO vo) {
 		
-		return map.noticeInsert(vo);
+		return map.boardInsert(vo);
 	}
 
 	@Override
@@ -45,12 +45,6 @@ public class BoardServiceImpl implements BoardService {
 	public void boardHitUpdate(int id) {
 		map.boardHitUpdate(id);
 
-	}
-
-	@Override
-	public List<BoardVO> boardSearchList(String key, String val) {
-		
-		return map.boardSearchList(key, val);
 	}
 
 

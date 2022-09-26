@@ -7,23 +7,26 @@
 		resultType="co.mall.prj.board.service.BoardVO">
 		
 	  	SELECT
-		BOARD_ID,BOARD_TITLE,MEMBER_ID,TO_CHAR(BOARD_DATE,'YY-MM-DD') AS BOARD_DATE
+		BOARD_ID,MEMBER_ID,TO_CHAR(BOARD_DATE,'YY-MM-DD') AS BOARD_DATE,BOARD_TITLE,BOARD_CONTENT,BOARD_HIT,BOARD_ATTACH,
+		BOARD_ATTACH_DIR,BOARD_ROLE
 		FROM BOARD
-		WHERE BOARD_ROLE='N'
+		WHERE BOARD_ROLE='N' <!-- 이런식으로 그냥 N으로 분류했음. -->
 		ORDER BY BOARD_ID DESC
 		
 	</select>
 
-	<select id="noticeSelect"
+	<select id="boardSelect"
 		resultType="co.mall.prj.board.service.BoardVO">
 		
-		SELECT *
+		SELECT BOARD_ID,MEMBER_ID,TO_CHAR(BOARD_DATE,'YY-MM-DD') AS BOARD_DATE,BOARD_TITLE,BOARD_CONTENT,BOARD_HIT,BOARD_ATTACH,
+		BOARD_ATTACH_DIR,BOARD_ROLE
 		FROM BOARD 
 		WHERE BOARD_ID =#{boardId}
+		AND BOARD_ROLE= #{boardRole}
 		
 	</select>
 
-	<insert id="noticeInsert">
+	<insert id="noticeInsert"  parameterType="co.mall.prj.board.service.BoardVO">
 		<selectKey keyProperty="boardId" resultType="int"
 			order="BEFORE">
 			SELECT 
@@ -31,7 +34,9 @@
 			ELSE MAX(BOARD_ID) + 1 END AS ID
 			FROM BOARD
 		</selectKey>
-		INSERT INTO BOARD VALUES
+		
+		INSERT INTO BOARD 
+		VALUES
 		(#{boardId},#{memberId},SYSDATE,#{boardTitle},#{boardContent},0,#{boardAttach},#{boardAttachDir},'N') <!-- boardRole = 'N' -->
 	</insert>
 
@@ -50,7 +55,7 @@
 	<delete id="boardDelete">
 		DELETE 
 		FROM BOARD 
-		WHERE BOARD_ROLE='N'
+		WHERE BOARD_ROLE= #{boardRole}
 		AND BOARD_ID = #{boardId}
 	</delete>
 
@@ -60,11 +65,9 @@
 		BOARD_HIT = BOARD_HIT + 1
 		WHERE BOARD_ROLE='N'
 		AND BOARD_ID = #{id}
+		
 	</update>
 
-	<select id="boardSearchList"
-		resultType="co.mall.prj.board.service.BoardVO">
 
-	</select>
 
 </mapper>

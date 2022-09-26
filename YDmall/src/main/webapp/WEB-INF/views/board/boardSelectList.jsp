@@ -55,9 +55,9 @@
 
 		<div>
 			<form id="frm" action="boardSelect.yd" method="post">
-				<input type="hidden" id="id" name="id">
+				
 				<c:if test="${not empty id}">
-					<!-- id가 존재하면(not empty) 버튼이 보이도록 한거임.  -->
+					<!-- id가 존재하면(not empty) 글쓰기 버튼이 보이도록 한거임.  -->
 					<button type="button" onclick="location.href='boardWriteForm.yd'">글쓰기</button>
 				</c:if>
 				<li><a class="menuLink" href="main.yd">홈</a></li>
@@ -68,7 +68,7 @@
 
 	<script type="text/javascript">
 	
-	function selectBoard(id) {
+	function selectBoard(id,role) {
 		document.getElementById("id").value=id;
 		frm.submit();
 	}

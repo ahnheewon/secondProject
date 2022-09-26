@@ -12,14 +12,14 @@
 	<div align="center">
 
 		<div>
-			<h1>게시글 상세보기</h1>
+			<h3>공지사항</h3>
 		</div>
 		<div>
 			<table border="1">
 				<tr>
 					<th width="100">작성자</th>
 					<td width="100" align="center">${vo.memberId }</td>
-					<th width="100">작성일자</th>
+					<th width="100">작성일</th>
 					<td width="100" align="center">${vo.boardDate }</td>
 					<th width="100">조회수</th>
 					<td width="100" align="center">${vo.boardHit }</td>
@@ -41,11 +41,10 @@
 		<br>
 
 		<div>
-			<c:if test="${vo.memberId eq memberId }">
 				<button type="button" onclick="subCall('E')">수정</button>&nbsp;&nbsp;
 				<button type="button" onclick="subCall('D')">삭제</button>&nbsp;&nbsp;
-		</c:if>
-			<button type="button" onclick="location.href='boardSelectList.yd'">목록</button>
+	
+			<button type="button" onclick="location.href='noticeSelectList.yd'">목록</button>
 		</div>
 	</div>
 	<div>

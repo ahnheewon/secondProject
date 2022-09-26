@@ -23,7 +23,7 @@ public class NoticeInsert implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 				
-		// 게시글 등록
+		// 공지사항 등록
 		
 		BoardService dao = new BoardServiceImpl();
 		BoardVO vo = new BoardVO();
@@ -40,11 +40,11 @@ public class NoticeInsert implements Command {
 			originalFileName= multi.getOriginalFileName("file"); // 실제 파일명
 			
 			vo.setBoardId(Integer.valueOf(multi.getParameter("boardId")));
-			vo.setMemberId(multi.getParameter("memberId"));
+			vo.setMemberId("관리자");
 			vo.setBoardDate(multi.getParameter("boardDate"));
 			vo.setBoardTitle(multi.getParameter("boardTitle"));
 			vo.setBoardContent(multi.getParameter("boardContent"));
-			vo.setBoardRole(multi.getParameter("boardRole"));
+			vo.setBoardRole("N");
 			
 		} catch (IOException e) {
 			e.printStackTrace();

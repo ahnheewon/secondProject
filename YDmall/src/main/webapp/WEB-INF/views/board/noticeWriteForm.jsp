@@ -13,12 +13,11 @@
 
 	<div align="center">
 		<div>
-			<h2>공지사항 등록</h2>
+			<h2>공지 등록</h2>
 		</div>
 		<div>
 			<!-- 파일 업로드 하니까 어떤 라이브러리를 쓰든 무조건 enctype="multipart/form-data" 써야합니다. -->
-			<form id="frm" action="boardInsert.yd" method="post"
-				enctype="multipart/form-data">
+			<form id="frm" action="noticeInsert.yd" method="post" enctype="multipart/form-data">
 				<br>
 
 				<div>

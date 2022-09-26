@@ -3,6 +3,7 @@ package co.mall.prj.board.notice.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.mall.prj.board.service.BoardService;
 import co.mall.prj.board.service.BoardServiceImpl;
 import co.mall.prj.board.service.BoardVO;
 import co.mall.prj.common.Command;
@@ -13,9 +14,11 @@ public class NoticeSelect implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 게시글 상세보기
 		
-		BoardServiceImpl dao = new BoardServiceImpl();
+		BoardService dao = new BoardServiceImpl();
 		BoardVO vo = new BoardVO();
-		vo.setBoardId(Integer.parseInt(request.getParameter("")));
+		vo.setBoardId(Integer.valueOf(request.getParameter("id")));
+		vo.setBoardRole(request.getParameter("role"));
+		System.out.println(request.getParameter("role"));
 		vo= dao.boardSelect(vo);
 		
 		if(vo != null) {
