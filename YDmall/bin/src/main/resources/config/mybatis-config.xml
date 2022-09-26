@@ -6,12 +6,12 @@
 <configuration>
 
 
-	<properties resource="config/db.properties"/>
+	<properties resource="config/db.properties" />
 
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true" />
 		<setting name="jdbcTypeForNull" value="NULL" />
-		
+
 	</settings>
 
 	<environments default="development">
@@ -27,7 +27,7 @@
 	</environments>
 
 	<mappers>
-		<package name="co.mall.prj.mapper"/>
+		<package name="co.mall.prj.mapper" />
 
 	</mappers>
 </configuration>

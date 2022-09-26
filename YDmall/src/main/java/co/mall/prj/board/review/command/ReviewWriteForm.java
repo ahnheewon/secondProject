@@ -10,7 +10,7 @@ public class ReviewWriteForm implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 글쓰기 폼 호출
-		return "board/boardWriteForm";
+		return "board/reviewWriteForm";
 	}
 
 }

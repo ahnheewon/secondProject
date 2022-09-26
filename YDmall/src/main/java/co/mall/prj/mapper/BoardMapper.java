@@ -8,9 +8,11 @@ import co.mall.prj.board.service.BoardVO;
 
 public interface BoardMapper {
 	
+
 	List<BoardVO> noticeSelectList();
-	BoardVO boardSelect(BoardVO vo);
-	int boardInsert(BoardVO vo);
+	BoardVO noticeSelect(BoardVO vo);
+	int noticeInsert(BoardVO vo);
+	
 	int boardUpdate(BoardVO vo);
 	int boardDelete(BoardVO vo);
 	

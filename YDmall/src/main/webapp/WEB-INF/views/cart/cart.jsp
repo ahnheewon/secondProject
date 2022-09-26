@@ -9,7 +9,7 @@
 <body>
 
 	<!-- ****** Cart Area Start ****** -->
-	<div class="cart_area section_padding_100 clearfix" >
+	<div class="cart_area section_padding_100 clearfix">
 		<div class="container">
 			<div class="row" style="margin: -50px -15px 100px -15px">
 				<div class="col-12">

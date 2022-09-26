@@ -36,16 +36,12 @@
 					<td colspan="5" height="150">${vo.boardContent }</td>
 				</tr>
 
-				<tr>
-					<th>첨부파일</th>
-					<td colspan="5">${vo.boardAttach}</td>
-				</tr>
 			</table>
 		</div>
 		<br>
 
 		<div>
-			<c:if test="${vo.memberId eq name }">
+			<c:if test="${vo.memberId eq memberId }">
 				<button type="button" onclick="subCall('E')">수정</button>&nbsp;&nbsp;
 				<button type="button" onclick="subCall('D')">삭제</button>&nbsp;&nbsp;
 		</c:if>

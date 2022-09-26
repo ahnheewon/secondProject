@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import co.mall.prj.board.service.BoardServicelmpl;
+import co.mall.prj.board.service.BoardServiceImpl;
 import co.mall.prj.board.service.BoardVO;
 import co.mall.prj.common.Command;
 
@@ -23,7 +23,7 @@ public class ReviewEdit implements Command {
 		
 		// 게시글 수정
 		
-		BoardServicelmpl dao = new BoardServicelmpl();
+		BoardServiceImpl dao = new BoardServiceImpl();
 		BoardVO vo = new BoardVO();
 		String viewPage = "board/boardError";
 		String filename="";

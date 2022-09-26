@@ -3,7 +3,7 @@ package co.mall.prj.board.notice.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.mall.prj.board.service.BoardServicelmpl;
+import co.mall.prj.board.service.BoardServiceImpl;
 import co.mall.prj.board.service.BoardVO;
 import co.mall.prj.common.Command;
 
@@ -13,7 +13,7 @@ public class NoticeDelete implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 게시글 삭제
 		
-		BoardServicelmpl dao = new BoardServicelmpl();
+		BoardServiceImpl dao = new BoardServiceImpl();
 		BoardVO vo = new BoardVO();
 				
 				vo.setBoardId(Integer.valueOf(request.getParameter("id")));

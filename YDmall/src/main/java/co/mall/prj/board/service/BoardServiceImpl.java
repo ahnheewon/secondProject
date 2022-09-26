@@ -7,10 +7,10 @@ import org.apache.ibatis.session.SqlSession;
 import co.mall.prj.common.DataSource;
 import co.mall.prj.mapper.BoardMapper;
 
-public class BoardServicelmpl implements BoardService {
+public class BoardServiceImpl implements BoardService {
 	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	private BoardMapper map = sqlSession.getMapper(BoardMapper.class);
-			
+	
 	@Override
 	public List<BoardVO> boardSelectList() {
 		
@@ -20,13 +20,13 @@ public class BoardServicelmpl implements BoardService {
 	@Override
 	public BoardVO boardSelect(BoardVO vo) {
 	//	BoardHitUpdate(vo.getBoardId());
-		return map.boardSelect(vo);
+		return map.noticeSelect(vo);
 	}
 
 	@Override
 	public int boardInsert(BoardVO vo) {
 		
-		return map.boardInsert(vo);
+		return map.noticeInsert(vo);
 	}
 
 	@Override
@@ -52,5 +52,6 @@ public class BoardServicelmpl implements BoardService {
 		
 		return map.boardSearchList(key, val);
 	}
+
 
 }

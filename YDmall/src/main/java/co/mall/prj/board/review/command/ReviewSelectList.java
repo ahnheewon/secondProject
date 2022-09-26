@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.mall.prj.board.service.BoardService;
-import co.mall.prj.board.service.BoardServicelmpl;
+import co.mall.prj.board.service.BoardServiceImpl;
 import co.mall.prj.board.service.BoardVO;
 import co.mall.prj.common.Command;
 
@@ -17,13 +17,13 @@ public class ReviewSelectList implements Command {
    public String exec(HttpServletRequest request, HttpServletResponse response) {
       // 게시글 전체 목록 보기
 	   
-      BoardService dao = new BoardServicelmpl();
+      BoardService dao = new BoardServiceImpl();
       List<BoardVO> list = new ArrayList<BoardVO>();
       
       list = dao.boardSelectList();
       request.setAttribute("list", list);
      
-      return "board/boardSelectList";
+      return "board/reviewSelectList";
    }
 
 }

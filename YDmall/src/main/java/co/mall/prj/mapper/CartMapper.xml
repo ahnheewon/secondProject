@@ -24,7 +24,8 @@
 		parameterType="co.mall.prj.cart.service.CartVO">
 		UPDATE CART
 		SET CART_Quantity = #{cartQuantity}
-		WHERE CART_ID = #{cartId}
+		WHERE
+		CART_ID = #{cartId}
 	</update>
 
 	<delete id="cartDelete"
