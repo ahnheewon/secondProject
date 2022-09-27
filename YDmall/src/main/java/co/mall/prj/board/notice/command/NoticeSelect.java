@@ -18,7 +18,6 @@ public class NoticeSelect implements Command {
 		BoardVO vo = new BoardVO();
 		vo.setBoardId(Integer.valueOf(request.getParameter("id")));
 		vo.setBoardRole(request.getParameter("role"));
-		System.out.println(request.getParameter("role"));
 		vo= dao.boardSelect(vo);
 		
 		if(vo != null) {

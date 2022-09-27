@@ -17,7 +17,7 @@
 		</div>
 		<div>
 			<!-- 파일 업로드 하니까 어떤 라이브러리를 쓰든 무조건 enctype="multipart/form-data" 써야합니다. -->
-			<form id="frm" action="noticeInsert.yd" method="post" enctype="multipart/form-data">
+			<form id="frm" action="boardInsert.yd" method="post" enctype="multipart/form-data">
 				<br>
 
 				<div>
@@ -28,7 +28,7 @@
 							<th width="150">작성자</th>
 							<td width="150"><input  style="width:330px" type="text" id="memberId"
 								name="memberId" value="관리자" readonly="readonly"></td>
-							<!-- ★★★★ read-only 로 할 예정 -->
+							<!-- ★★★★ value 로그인 가능하게되면 {$memberId} 로 할 예정 -->
 
 						<tr>
 							<th>제목</th>
@@ -46,10 +46,12 @@
 							<th>첨부파일</th>
 							<td><input type="file" id="file" name="file"></td>
 						</tr>
+						
 					</table>
 				</div>
 				<br>
 				<div>
+					<input type="hidden" id="boardRole" name="boardRole" value="N">
 					<input type="submit" value="등록">&nbsp;&nbsp;&nbsp; <input
 						type="reset" value="취소">&nbsp;&nbsp;&nbsp; <input
 						type="button" value="목록"

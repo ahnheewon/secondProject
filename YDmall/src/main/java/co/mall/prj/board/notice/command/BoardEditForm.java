@@ -8,15 +8,18 @@ import co.mall.prj.board.service.BoardServiceImpl;
 import co.mall.prj.board.service.BoardVO;
 import co.mall.prj.common.Command;
 
-public class NoticeEditForm implements Command {
+public class BoardEditForm implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 수정폼.
 		BoardService dao = new BoardServiceImpl();
 		BoardVO vo = new BoardVO();
+		
+		
 		vo.setBoardId(Integer.valueOf(request.getParameter("id")));
 		vo.setBoardRole(request.getParameter("role"));
+		vo.setBoardAttach(request.getParameter("file"));
 		vo = dao.boardSelect(vo);
 		request.setAttribute("vo", vo);
 		

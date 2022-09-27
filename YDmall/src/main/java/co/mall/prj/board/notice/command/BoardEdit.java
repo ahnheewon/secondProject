@@ -1,8 +1,6 @@
 package co.mall.prj.board.notice.command;
 
-import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,22 +13,23 @@ import co.mall.prj.board.service.BoardServiceImpl;
 import co.mall.prj.board.service.BoardVO;
 import co.mall.prj.common.Command;
 
-public class NoticeInsert implements Command {
-	private String saveFolder = "C:\\fileUploadTest"; //실제 파일이 저장되는 공간.
+public class BoardEdit implements Command {
+	private String saveFolder = "D:\\Users\\USER\\git\\secondProject\\YDmall\\src\\main\\webapp\\img\\resources"; //실제 파일이 저장되는 공간.
 	private String charactSet = "utf-8"; // 한글깨짐 방지
 	private int maxSize = 1024*1024*1024; // 업로드할 파일 최대 사이즈.
-	
+
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-				
-		// 공지사항 등록
+		
+		// 게시글 수정
 		
 		BoardService dao = new BoardServiceImpl();
-		BoardVO vo = new BoardVO();
-		String viewPage ="board/boardError";
+		BoardVO vo = new BoardVO(); // 새로운 객체 (아무것도 안들어있다.)
+		String viewPage = "board/boardError";
 		String filename="";
 		String originalFileName="";
 		
+
 		try {
 			MultipartRequest multi = 
 				new MultipartRequest(request, saveFolder, maxSize, charactSet, new DefaultFileRenamePolicy());
@@ -40,11 +39,13 @@ public class NoticeInsert implements Command {
 			originalFileName= multi.getOriginalFileName("file"); // 실제 파일명
 			
 			vo.setBoardId(Integer.valueOf(multi.getParameter("boardId")));
-			vo.setMemberId("관리자");
+			vo.setMemberId(multi.getParameter("memberId"));
 			vo.setBoardDate(multi.getParameter("boardDate"));
 			vo.setBoardTitle(multi.getParameter("boardTitle"));
 			vo.setBoardContent(multi.getParameter("boardContent"));
-			vo.setBoardRole("N");
+			vo.setBoardAttach(multi.getParameter("boardAttach"));
+			vo.setBoardAttachDir(multi.getParameter("boardAttachDir"));
+			vo.setBoardRole(multi.getParameter("boardRole"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -52,13 +53,15 @@ public class NoticeInsert implements Command {
 		// 파일 업로드 된 것 저장 end
 		
 		
-		// 파일이 없으면 null값
+		// 첨부파일 처리 하고
 		
-		int n = dao.boardInsert(vo);
-		if(n!=0) {
-			viewPage = "NoticeSelectList.yd";
+		int n = dao.boardUpdate(vo);
+		if(n !=0) {
+			vo=dao.boardSelect(vo);
+			request.setAttribute("vo", vo);
+			viewPage = "board/noticeSelect"; // 수정완료 시 목록으로 돌아감.
 		} else {
-			request.setAttribute("message", "게시글 등록이 실패했다.");
+			request.setAttribute("message", "데이터가 수정되지 않았습니다.");
 		}
 		return viewPage;
 	}

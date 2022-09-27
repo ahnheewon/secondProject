@@ -26,7 +26,7 @@
 		
 	</select>
 
-	<insert id="noticeInsert"  parameterType="co.mall.prj.board.service.BoardVO">
+	<insert id="boardInsert"  parameterType="co.mall.prj.board.service.BoardVO">
 		<selectKey keyProperty="boardId" resultType="int"
 			order="BEFORE">
 			SELECT 
@@ -37,15 +37,13 @@
 		
 		INSERT INTO BOARD 
 		VALUES
-		(#{boardId},#{memberId},SYSDATE,#{boardTitle},#{boardContent},0,#{boardAttach},#{boardAttachDir},'N') <!-- boardRole = 'N' -->
+		(#{boardId},#{memberId},SYSDATE,#{boardTitle},#{boardContent},0,#{boardAttach},#{boardAttachDir},#{boardRole}) <!-- boardRole = 'N' -->
+		
 	</insert>
 
 	<update id="boardUpdate">
 		UPDATE BOARD
 		<set>
-			<if test="memberId != null">MEMBER_ID = #{memberId},</if>
-			<if test="boardDate != null">BOARD_DATE = to_char(#{boardDate}),</if>
-			<if test="boardTitle != null">BOARD_TITLE = #{boardTitle},</if>
 			<if test="boardContent != null">BOARD_CONTENT = #{boardContent},</if>
 		</set>
 		WHERE BOARD_ROLE=#{boardRole}

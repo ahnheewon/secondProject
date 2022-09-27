@@ -1,6 +1,8 @@
 package co.mall.prj.board.notice.command;
 
+import java.io.File;
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,23 +15,22 @@ import co.mall.prj.board.service.BoardServiceImpl;
 import co.mall.prj.board.service.BoardVO;
 import co.mall.prj.common.Command;
 
-public class NoticeEdit implements Command {
-	private String saveFolder = "C:\\fileUploadTest"; //실제 파일이 저장되는 공간.
+public class BoardInsert implements Command {
+	private String saveFolder = "D:\\Users\\USER\\git\\secondProject\\YDmall\\src\\main\\webapp\\img\\resources"; //실제 파일이 저장되는 공간.
 	private String charactSet = "utf-8"; // 한글깨짐 방지
 	private int maxSize = 1024*1024*1024; // 업로드할 파일 최대 사이즈.
-
+	
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		
-		// 게시글 수정
+				
+		// 공지사항 등록
 		
 		BoardService dao = new BoardServiceImpl();
 		BoardVO vo = new BoardVO();
-		String viewPage = "board/boardError";
+		String viewPage ="board/boardError";
 		String filename="";
 		String originalFileName="";
 		
-
 		try {
 			MultipartRequest multi = 
 				new MultipartRequest(request, saveFolder, maxSize, charactSet, new DefaultFileRenamePolicy());
@@ -42,7 +43,9 @@ public class NoticeEdit implements Command {
 			vo.setBoardDate(multi.getParameter("boardDate"));
 			vo.setBoardTitle(multi.getParameter("boardTitle"));
 			vo.setBoardContent(multi.getParameter("boardContent"));
-			vo.setBoardContent(multi.getParameter("boardRole"));
+			vo.setBoardAttach(originalFileName);
+			vo.setBoardAttachDir(saveFolder+File.separator+filename);
+			vo.setBoardRole(multi.getParameter("boardRole"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -50,15 +53,13 @@ public class NoticeEdit implements Command {
 		// 파일 업로드 된 것 저장 end
 		
 		
-		// 첨부파일 처리 하고
+		// 파일이 없으면 null값
 		
-		int n = dao.boardUpdate(vo);
-		if(n !=0) {
-			vo=dao.boardSelect(vo);
-			request.setAttribute("vo", vo);
-			viewPage = "notice/noticeSelect"; // 수정완료 시 목록으로 돌아감.
+		int n = dao.boardInsert(vo);
+		if(n!=0) {
+			viewPage = "noticeSelectList.yd";
 		} else {
-			request.setAttribute("message", "데이터가 수정되지 않았습니다.");
+			request.setAttribute("message", "게시글 등록이 실패했다.");
 		}
 		return viewPage;
 	}

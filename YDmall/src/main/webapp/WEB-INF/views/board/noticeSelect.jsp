@@ -11,9 +11,7 @@
 <body>
 	<div align="center">
 
-		<div>
-			<h3>공지사항</h3>
-		</div>
+		<div><h3>공지사항</h3></div>
 		<div>
 			<table border="1">
 				<tr>
@@ -27,20 +25,29 @@
 
 				<tr>
 					<th>제목</th>
-					<td colspan="5">${vo.boardTitle }</td>
+					<td colspan="6">${vo.boardTitle }</td>
 				</tr>
 
 				<tr>
 					<th>내용</th>
-
-					<td colspan="5" height="150">${vo.boardContent }</td>
+		
+					<td colspan="6" height="150">
+					<c:if test="${not empty vo.boardAttach}"> <!-- 첨부파일이 있으면 보이도록 -->
+					<p><img src="./img/resources/${vo.boardAttach}"/></p>
+					</c:if>
+					${vo.boardContent }</td>
 				</tr>
-
+				
+				<tr>
+					<th>첨부파일</th>
+					<td colspan="6">${vo.boardAttach}</td>
+				</tr>
 			</table>
 		</div>
 		<br>
 
 		<div>
+				<!-- <c:if test="${vo.memberId eq name }"></c:if> 로그인 추가하고 추가 --> 
 				<button type="button" onclick="subCall('E')">수정</button>&nbsp;&nbsp;
 				<button type="button" onclick="subCall('D')">삭제</button>&nbsp;&nbsp;
 	
@@ -50,6 +57,8 @@
 	<div>
 		<form id="frm" method="post">
 			<input type="hidden" id="id" name="id" value="${vo.boardId }">
+			<input type="hidden" id="file" name="file" value="${vo.boardAttach }">
+			<input type="hidden" id="role" name="role" value="${vo.boardRole}">
 		</form>
 	</div>
 

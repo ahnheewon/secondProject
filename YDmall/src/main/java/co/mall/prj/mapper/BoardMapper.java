@@ -11,7 +11,7 @@ public interface BoardMapper {
 
 	List<BoardVO> noticeSelectList();
 	BoardVO boardSelect(BoardVO vo);
-	int boardInsert(BoardVO vo);
+	int boardInsert(BoardVO vo); // 공지글 등록
 	
 	int boardUpdate(BoardVO vo);
 	int boardDelete(BoardVO vo);

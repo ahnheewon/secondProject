@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.mall.prj.board.notice.command.NoticeDelete;
-import co.mall.prj.board.notice.command.NoticeEdit;
-import co.mall.prj.board.notice.command.NoticeEditForm;
-import co.mall.prj.board.notice.command.NoticeInsert;
+import co.mall.prj.board.notice.command.BoardInsert;
+import co.mall.prj.board.notice.command.BoardDelete;
+import co.mall.prj.board.notice.command.BoardEdit;
+import co.mall.prj.board.notice.command.BoardEditForm;
 import co.mall.prj.board.notice.command.NoticeSelect;
 import co.mall.prj.board.notice.command.NoticeSelectList;
 import co.mall.prj.board.notice.command.NoticeWriteForm;
@@ -50,10 +50,19 @@ public class FrontController extends HttpServlet {
 		map.put("/noticeSelectList.yd", new NoticeSelectList()); // 공지사항
 		map.put("/noticeSelect.yd", new NoticeSelect()); // 
 		map.put("/noticeWriteForm.yd", new NoticeWriteForm());
-		map.put("/noticeInsert.yd", new NoticeInsert());
-		map.put("/boardEditForm.yd", new NoticeEditForm()); // 
-		map.put("/boardEdit.yd", new NoticeEdit()); // 
-		map.put("/boardDelete.yd", new NoticeDelete()); // 
+		
+//		map.put("/reviewSelectList.yd", new ReviewSelectList()); // 리뷰
+//		map.put("/reviewSelect.yd", new ReviewSelect()); // 
+//		map.put("/reviewWriteForm.yd", new ReviewWriteForm());
+//		
+//		map.put("/qnaSelectList.yd", new QnaSelectList()); // QnA
+//		map.put("/qnaSelect.yd", new QnaSelect()); // 
+//		map.put("/qnaWriteForm.yd", new QnaWriteForm());
+		
+		map.put("/boardInsert.yd", new BoardInsert());	// 게시판CRUD
+		map.put("/boardEditForm.yd", new BoardEditForm());  
+		map.put("/boardEdit.yd", new BoardEdit());
+		map.put("/boardDelete.yd", new BoardDelete()); 
 		
 		map.put("/shop.yd", new Shop());
 		map.put("/cart.yd", new Cart());
