@@ -1,4 +1,4 @@
-package co.mall.prj.board.command;
+package co.mall.prj.board.notice.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,8 +19,8 @@ public class BoardEditForm implements Command {
 		
 		vo.setBoardId(Integer.valueOf(request.getParameter("id")));
 		vo.setBoardRole(request.getParameter("role"));
-		vo = dao.boardSelect(vo); // vo 객체에 select 쿼리로 조회한 값들 담기.
-		
+		vo.setBoardAttach(request.getParameter("file"));
+		vo = dao.boardSelect(vo);
 		request.setAttribute("vo", vo);
 		
 		return "board/boardEditForm";

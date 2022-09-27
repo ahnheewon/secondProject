@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,9 +39,7 @@
 				<tr>
 					<th>첨부파일</th>
 					<td colspan="5">
-	
-					<input type="file" id="boardAttach" name="boardAttach">
-					
+					<input type="file" id="boardAttach" name="boardAttach" value="${vo.boardAttach}">
 					</td>
 				</tr>
 				
@@ -53,7 +49,7 @@
 	<div>
 		<input type="hidden" id="boardId" name="boardId" value="${vo.boardId }">
 		<input type="hidden" id="boardRole" name="boardRole" value="${vo.boardRole }">
-		<input type="hidden" id="boardAttach" name="boardAttach" value="${vo.boardAttach}">
+		<input type="hidden" id="boardAttachDir" name="boardAttachDir" value="${vo.boardAttachDir}">
 		<input type="submit" value="수정">&nbsp;&nbsp;
 		<input type="button" onclick="location.href='noticeSelectList.yd'" value="목록">
 		</div>

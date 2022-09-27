@@ -1,4 +1,4 @@
-package co.mall.prj.board.command;
+package co.mall.prj.board.notice.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

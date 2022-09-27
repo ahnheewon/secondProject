@@ -45,8 +45,6 @@
 		UPDATE BOARD
 		<set>
 			<if test="boardContent != null">BOARD_CONTENT = #{boardContent},</if>
-			<if test="boardAttach != null">BOARD_ATTACH = #{boardAttach},</if>
-			<if test="boardAttachDir != null">BOARD_ATTACH_DIR = #{boardAttachDir}</if>
 		</set>
 		WHERE BOARD_ROLE=#{boardRole}
 		AND BOARD_ID = #{boardId}

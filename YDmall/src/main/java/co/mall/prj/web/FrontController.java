@@ -11,16 +11,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.mall.prj.board.command.BoardDelete;
-import co.mall.prj.board.command.BoardEdit;
-import co.mall.prj.board.command.BoardEditForm;
-import co.mall.prj.board.command.BoardInsert;
-
+import co.mall.prj.board.notice.command.BoardInsert;
+import co.mall.prj.board.notice.command.BoardDelete;
+import co.mall.prj.board.notice.command.BoardEdit;
+import co.mall.prj.board.notice.command.BoardEditForm;
 import co.mall.prj.board.notice.command.NoticeSelect;
 import co.mall.prj.board.notice.command.NoticeSelectList;
 import co.mall.prj.board.notice.command.NoticeWriteForm;
-import co.mall.prj.board.review.command.ReviewSelectList;
-
 import co.mall.prj.cart.command.Cart;
 import co.mall.prj.command.Best;
 import co.mall.prj.command.Checkout;
@@ -54,7 +51,7 @@ public class FrontController extends HttpServlet {
 		map.put("/noticeSelect.yd", new NoticeSelect()); // 
 		map.put("/noticeWriteForm.yd", new NoticeWriteForm());
 		
-		map.put("/reviewSelectList.yd", new ReviewSelectList()); // 리뷰
+//		map.put("/reviewSelectList.yd", new ReviewSelectList()); // 리뷰
 //		map.put("/reviewSelect.yd", new ReviewSelect()); // 
 //		map.put("/reviewWriteForm.yd", new ReviewWriteForm());
 //		

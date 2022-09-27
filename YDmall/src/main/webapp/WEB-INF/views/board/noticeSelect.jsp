@@ -38,12 +38,10 @@
 					${vo.boardContent }</td>
 				</tr>
 				
-					<c:if test="${not empty vo.boardAttach}"> <!-- 첨부파일이 있으면 보이도록 -->
 				<tr>
 					<th>첨부파일</th>
 					<td colspan="6">${vo.boardAttach}</td>
 				</tr>
-				</c:if>
 			</table>
 		</div>
 		<br>
@@ -59,6 +57,7 @@
 	<div>
 		<form id="frm" method="post">
 			<input type="hidden" id="id" name="id" value="${vo.boardId }">
+			<input type="hidden" id="file" name="file" value="${vo.boardAttach }">
 			<input type="hidden" id="role" name="role" value="${vo.boardRole}">
 		</form>
 	</div>
