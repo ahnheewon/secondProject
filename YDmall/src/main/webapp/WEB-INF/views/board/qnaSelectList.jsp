@@ -83,14 +83,14 @@
 			<div class="container-fluid">
 
 				<!-- Page Heading -->
-				<h1 class="h3 mb-2 text-gray-800">리뷰</h1>
+				<h1 class="h3 mb-2 text-gray-800">Q & A</h1>
 				<p class="mb-4">
 			
 
 				<!-- DataTales Example -->
 				<div class="card shadow mb-4">
 					<div class="card-header py-3">
-						<h6 class="m-0 font-weight-bold text-primary">리뷰를 남겨보세요</h6>
+						<h6 class="m-0 font-weight-bold text-primary">질문을 남겨보세요</h6>
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
@@ -100,7 +100,6 @@
 									<tr>
 										<th><input type="checkbox" name="selectAll" value='selectAll' onclick='selectAll(this)'></th>
 										<th>번호</th>
-										<th>상품명</th>
 										<th>제목</th>
 										<th>작성자</th>
 										<th>작성일</th>
@@ -123,8 +122,7 @@
 												
 												<td><input type="checkbox" name="chk" value="" onclick='checkSelectAll()'></td>
 												<td align="center">${n.boardId }</td>
-												<td>야호</td>
-												<td onclick="selectReview('${n.boardId}','${n.boardRole}')" style="cursor:pointer">${n.boardTitle }</td>
+												<td onclick="selectQna('${n.boardId}','${n.boardRole}')" style="cursor:pointer">${n.boardTitle }</td>
 												<td align="center">${n.memberId }</td>
 												<td align="center">${n.boardDate }</td>
 												<td align="center">${n.boardHit }</td>
@@ -134,11 +132,11 @@
 									</c:if>
 								</tbody>
 			<div>
-			<form id="frm" action="reviewSelect.yd" method="post">
+			<form id="frm" action="qnaSelect.yd" method="post">
 				<input type="hidden" id="id" name="id">
 				<input type="hidden" id="role" name="role">
 			<%-- <c:if test="${not empty id}"> --%>
-				<button type="button" onclick="location.href='reviewWriteForm.yd'" style="float: right">글쓰기</button>
+				<button type="button" onclick="location.href='qnaWriteForm.yd'" style="float: right">글쓰기</button>
 				<%-- </c:if>  --%>
 			</form>
 		</div>
@@ -193,7 +191,7 @@
 		
 		<script type="text/javascript">
 	
-	function selectReview(id,role) {
+	function selectQna(id,role) {
 		document.getElementById("id").value=id;
 		document.getElementById("role").value=role;
 		frm.submit();

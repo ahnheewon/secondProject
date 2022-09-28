@@ -17,10 +17,10 @@ public class NoticeSelectList implements Command {
    public String exec(HttpServletRequest request, HttpServletResponse response) {
       // 게시글 전체 목록 보기
 	   
-      BoardServiceImpl dao = new BoardServiceImpl();
+      BoardService dao = new BoardServiceImpl();
       List<BoardVO> list = new ArrayList<BoardVO>();
       
-      list = dao.boardSelectList();
+      list = dao.noticeSelectList();
       request.setAttribute("list", list);
  
       return "board/noticeSelectList";

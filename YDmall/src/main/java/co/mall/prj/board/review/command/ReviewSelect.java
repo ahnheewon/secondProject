@@ -17,15 +17,15 @@ public class ReviewSelect implements Command {
 		BoardService dao = new BoardServiceImpl();
 		BoardVO vo = new BoardVO();
 		vo.setBoardId(Integer.valueOf(request.getParameter("id"))); // String을 int로 변환.
+		vo.setBoardRole(request.getParameter("role"));
 		vo= dao.boardSelect(vo);
 		
 		if(vo != null) {
-			dao.boardHitUpdate(vo.getBoardId()); // 조회수 증가
-			request.setAttribute("vo", vo);
-			
+			dao.boardHitUpdate(vo); // 조회수 증가
+			request.setAttribute("vo", vo);		
 		}
 		
-		return "board/boardSelect";
+		return "board/reviewSelect";
 	}
 
 }

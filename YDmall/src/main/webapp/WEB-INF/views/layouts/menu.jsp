@@ -112,8 +112,7 @@
 											<div class="dropdown-menu" aria-labelledby="karlDropdown">
 												<a class="dropdown-item" href="noticeSelectList.yd">notice</a>
 												<a class="dropdown-item" href="reviewSelectList.yd">review</a>
-												<a class="dropdown-item" href="qnaSelectList.yd">q&a</a> <a
-													class="dropdown-item" href="fnqSelectList.yd">faq</a>
+												<a class="dropdown-item" href="qnaSelectList.yd">q & a</a>
 
 											</div></li>
 									</ul>

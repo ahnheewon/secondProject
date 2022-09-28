@@ -5,13 +5,17 @@ import java.util.List;
 public interface BoardService {
 	
 	
-	List<BoardVO> boardSelectList();	
+	List<BoardVO> noticeSelectList();	
+	List<BoardVO> reviewSelectList();	
+	List<BoardVO> qnaSelectList();	
+	
 	BoardVO boardSelect(BoardVO vo);
 	int boardInsert(BoardVO vo);
 	int boardUpdate(BoardVO vo);
 	int boardDelete(BoardVO vo);
 	
-	void boardHitUpdate(int id);
+	void boardIdMinus(BoardVO vo); // 글삭제 시, 다른 글 번호 감소
+	void boardHitUpdate(BoardVO vo);
 
 	
 }

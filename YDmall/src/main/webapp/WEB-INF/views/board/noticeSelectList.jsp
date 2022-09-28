@@ -85,8 +85,7 @@
 				<!-- Page Heading -->
 				<h1 class="h3 mb-2 text-gray-800">공지사항</h1>
 				<p class="mb-4">
-					<a target="_blank" href="https://google.com"> [누르면 링크]</a>
-				</p>
+				
 
 				<!-- DataTales Example -->
 				<div class="card shadow mb-4">
@@ -99,6 +98,7 @@
 								cellspacing="0">
 								<thead>
 									<tr>
+										<th><input type="checkbox" name="selectAll" value='selectAll' onclick='selectAll(this)'></th>
 										<th>번호</th>
 										<th>제목</th>
 										<th>작성자</th>
@@ -118,10 +118,11 @@
 									<c:if test="${not empty list }">
 										<c:forEach items="${list }" var="n">
 											<tr onMouseover="this.style.backgroundColor='yellow';"
-												onMouseout="this.style.backgroundColor='white';"
-												onclick="selectNotice('${n.boardId}','${n.boardRole}')">
+												onMouseout="this.style.backgroundColor='white';">
+												
+												<td><input type="checkbox" name="chk" value="" onclick='checkSelectAll()'></td>
 												<td align="center">${n.boardId }</td>
-												<td>${n.boardTitle }</td>
+												<td onclick="selectNotice('${n.boardId}','${n.boardRole}')" style="cursor:pointer">${n.boardTitle }</td>
 												<td align="center">${n.memberId }</td>
 												<td align="center">${n.boardDate }</td>
 												<td align="center">${n.boardHit }</td>
@@ -194,6 +195,31 @@
 		document.getElementById("id").value=id;
 		document.getElementById("role").value=role;
 		frm.submit();
+	}
+	
+	function checkSelectAll()  {
+		  
+		// 전체 체크박스
+		  const checkboxes 
+		    = document.querySelectorAll('input[name="chk"]');
+		  
+		  // 선택된 체크박스
+		  const checked 
+		    = document.querySelectorAll('input[name="chk"]:checked');
+		 
+		  // select all 체크박스
+		  const selectAll 
+		    = document.querySelector('input[name="selectAll"]');
+		  
+		  if(checkboxes.length === checked.length) {
+		    selectAll.checked = true;}
+		  else {selectAll.checked = false;}
+
+		}
+	
+	function selectAll(selectAll)  {
+	const checkboxes = document.getElementsByName('chk');
+	checkboxes.forEach((checkbox) => { checkbox.checked = selectAll.checked; })
 	}
 	</script>
 		

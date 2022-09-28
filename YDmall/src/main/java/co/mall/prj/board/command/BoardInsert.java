@@ -16,7 +16,8 @@ import co.mall.prj.board.service.BoardVO;
 import co.mall.prj.common.Command;
 
 public class BoardInsert implements Command {
-	private String saveFolder = "C:\\Users\\admin\\git\\secondProject\\YDmall\\src\\main\\webapp\\img\\resources"; //실제 파일이 저장되는 공간.
+	private String saveFolder = "D:\\Users\\USER\\git\\secondProject\\YDmall\\src\\main\\webapp\\img\\resources"; //실제 파일이 저장되는 공간.
+	//private String saveFolder = "C:\\Users\\admin\\git\\secondProject\\YDmall\\src\\main\\webapp\\img\\resources"; //실제 파일이 저장되는 공간.
 	private String charactSet = "utf-8"; // 한글깨짐 방지
 	private int maxSize = 1024*1024*1024; // 업로드할 파일 최대 사이즈.
 	
@@ -57,9 +58,15 @@ public class BoardInsert implements Command {
 		
 		int n = dao.boardInsert(vo);
 		if(n!=0) {
-			viewPage = "noticeSelectList.yd";
+			if(vo.getBoardRole().equals("N")) {
+			viewPage = "noticeSelectList.yd";}
+			else if(vo.getBoardRole().equals("R")) {
+				viewPage = "reviewSelectList.yd";
+			} else if(vo.getBoardRole().equals("Q")) {
+				viewPage = "qnaSelectList.yd";
+			}
 		} else {
-			request.setAttribute("message", "게시글 등록이 실패했다.");
+			request.setAttribute("message", "게시글 등록이 실패했습니다.");
 		}
 		return viewPage;
 	}

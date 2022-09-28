@@ -16,5 +16,5 @@ public class BoardVO {
 	private String boardAttach; // 파일 업로드
 	private String boardAttachDir; // 물리적 파일 저장 위치
 	private String boardRole; // 게시판 구분용 role ex)R=리뷰, Q=QnA, N=공지사항 등
-	
+	private int boardReplyTo; // 덧글 구분용 ex) 1=게시글 1의 덧글
 }

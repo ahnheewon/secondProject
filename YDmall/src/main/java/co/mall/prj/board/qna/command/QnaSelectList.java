@@ -1,4 +1,4 @@
-package co.mall.prj.board.review.command;
+package co.mall.prj.board.qna.command;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import co.mall.prj.board.service.BoardServiceImpl;
 import co.mall.prj.board.service.BoardVO;
 import co.mall.prj.common.Command;
 
-public class ReviewSelectList implements Command {
+public class QnaSelectList implements Command {
 
    @Override
    public String exec(HttpServletRequest request, HttpServletResponse response) {
@@ -20,10 +20,10 @@ public class ReviewSelectList implements Command {
       BoardService dao = new BoardServiceImpl();
       List<BoardVO> list = new ArrayList<BoardVO>();
    
-      list = dao.reviewSelectList();
+      list = dao.qnaSelectList();
       request.setAttribute("list", list);
      
-      return "board/reviewSelectList";
+      return "board/qnaSelectList";
    }
 
 }

@@ -12,14 +12,27 @@ public class BoardServiceImpl implements BoardService {
 	private BoardMapper map = sqlSession.getMapper(BoardMapper.class);
 	
 	@Override
-	public List<BoardVO> boardSelectList() {
+	public List<BoardVO> noticeSelectList() {
 		
 		return map.noticeSelectList();
 	}
 
 	@Override
+	public List<BoardVO> reviewSelectList() {
+
+		return map.reviewSelectList();
+	}
+
+	@Override
+	public List<BoardVO> qnaSelectList() {
+
+		return map.qnaSelectList();
+	}
+
+	
+	@Override
 	public BoardVO boardSelect(BoardVO vo) {
-	//	BoardHitUpdate(vo.getBoardId());
+	//	BoardHitUpdate(vo.getBoardId()); // 조회수 증가 중복 방지
 		return map.boardSelect(vo);
 	}
 
@@ -42,10 +55,17 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void boardHitUpdate(int id) {
-		map.boardHitUpdate(id);
+	public void boardHitUpdate(BoardVO vo) {
+		map.boardHitUpdate(vo);
 
 	}
 
+	@Override
+	public void boardIdMinus(BoardVO vo) {
+		map.boardIdMinus(vo);
+		
+	}
+
+	
 
 }
