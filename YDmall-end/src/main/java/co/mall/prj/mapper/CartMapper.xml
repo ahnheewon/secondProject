@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.mall.prj.mapper.CartMapper">
+
+	<select id="cartSelect"
+		resultType="co.mall.prj.cart.service.CartVO">
+		SELECT MEMBER_ID, PRODUCT_NAME, PRODUCT_PRICE, CART_QUANTITY, PRODUCT_ID
+		FROM CART
+		WHERE MEMBER_ID = #{memberId}
+	</select>
+
+	<!-- 장바구니 담기전 상품이 장바구니에 있는지 조회 -->
+	<select id="selectCountInCart" resultType="String">
+		<![CDATA[SELECT decode(count(*), 0) 'false', 'true') FROM CART
+				 WHERE PRODUCT_ID = #{product_id}
+				 AND member_id = #{member_id}
+				 ]]>
+	</select>
+
+	
+	<insert id="cartInsert" parameterType="co.mall.prj.cart.service.CartVO">
+		INSERT INTO CART (MEMBER_ID, PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SIZE, CART_QUANTITY)
+		VALUES(#{memberId}, #{productId}, #{productName}, #{productPrice}, #{productSize}, #{cartQuantity})
+	</insert>
+	<!-- 카트 수량 수정 -->
+	<update id="cartUpdate"
+		parameterType="co.mall.prj.cart.service.CartVO">
+		UPDATE CART
+		SET CART_Quantity = #{cartQuantity}
+		WHERE
+		CART_ID = #{cartId}
+	</update>
+<!-- 카트에 담긴 상품 행별 삭제 -->
+	<delete id="cartDelete"
+		parameterType="co.mall.prj.cart.service.CartVO">
+		DELETE CART
+		WHERE MEMBER_ID = #{memberId}
+		AND PRODUCT_ID = #{productId}
+	</delete>
+	
+	<delete id="clearCart" parameterType="co.mall.prj.cart.service.CartVO">
+		DELETE FROM CART WHERE MEMBER_ID = #{memberId}
+	</delete>
+</mapper>

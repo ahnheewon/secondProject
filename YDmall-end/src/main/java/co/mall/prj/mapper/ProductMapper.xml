@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.mall.prj.mapper.ProductMapper">
+	<select id="productSelectList" resultType="co.mall.prj.product.service.ProductVO">
+		SELECT *
+		FROM PRODUCT 
+		ORDER BY PRODUCT_ID
+	</select>
+
+	<select id="productMajorList" resultType="co.mall.prj.product.service.ProductVO">
+		SELECT *
+		FROM PRODUCT
+		WHERE PRODUCT_EVENT = #{productMajor} AND PRODUCT_DEFAULT = 1
+	</select>
+	
+	<select id="productRecommend" resultType="co.mall.prj.product.service.ProductVO">
+		SELECT *
+		FROM PRODUCT
+		WHERE PRODUCT_EVENT = #{productEvent} AND PRODUCT_DEFAULT = 1
+	</select>
+	
+
+	<select id="productSelect" resultType="co.mall.prj.product.service.ProductVO">
+		SELECT *
+		FROM PRODUCT
+		WHERE PRODUCT_NAME = #{productName} AND PRODUCT_DEFAULT = 1
+	</select>
+	
+	<select id="productSelect2" resultType="co.mall.prj.product.service.ProductVO">
+		SELECT *
+		FROM PRODUCT
+		WHERE PRODUCT_ID = #{productId}
+	</select>
+
+	<insert id="productInsert">
+		<selectKey keyProperty="productId" resultType="int"
+			order="BEFORE">
+			SELECT CASE
+			WHEN MAX(PRODUCT_ID) IS NULL THEN 1
+			ELSE MAX(PRODUCT_ID) + 1 END AS FROM PRODUCT
+		</selectKey>
+
+		INSERT INTO PRODUCT
+		VALUES(#{productId},#{productMajor},#{productMinor},#{productName},#{productSize},#{productPrice},#{productQuantity},#{productEvent},#{productDefault},#{productExplain})
+
+	</insert>
+
+	<update id="productUpdate">
+		UPDATE PRODUCT
+		<set>
+			<if test="productSize!=null">PRODUCT_SIZE = #{productSize},</if>
+			<if test="productPrice!=null">PRODUCT_PRICE = #{productPrice},</if>
+			<if test="productQuantity!=null">PRODUCT_QUANTITY = #{productQuantity},</if>
+			<if test="productDefault!=null">PRODUCT_DEFAULT = #{productDefault},</if>
+			<if test="productEvent!=null">PRODUCT_EVENT = #{productEvent},</if>
+			<if test="productExplain!=null">PRODUCT_EXPLAIN = #{productExplain},</if>
+		</set>
+		WHERE PRODUCT_ID = #{productId}
+	</update>
+
+	<delete id="productDelete">
+		DELETE FROM PRODUCT
+		WHERE PRODUCT_ID = #{productId}
+	</delete>
+
+</mapper>
