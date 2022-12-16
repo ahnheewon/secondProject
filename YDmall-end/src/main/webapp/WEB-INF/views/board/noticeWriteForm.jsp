@@ -135,49 +135,42 @@ h4 {
 		<h4 margin-bottom: 20px;">══════•°• 공지 등록 •°•══════</h4>
 		<br>
 		</div>
-		<div>
 			<!-- 파일 업로드 하니까 어떤 라이브러리를 쓰든 무조건 enctype="multipart/form-data" 써야합니다. -->
-			<form id="frm" action="boardInsert.yd" method="post" enctype="multipart/form-data">
 			
-
+		<div>
+			<form id="frm" action="boardInsert.yd" method="post" enctype="multipart/form-data">
 				<div>
-
-
 					<table border="1">
 						<tr>
 							<th width="150" style="text-align: center;">작성자</th>
-							<td width="150" style="font-weight:bold;"><input  style="width:300px" type="text" id="memberId"
-								name="memberId" value="${id }"  readonly="readonly"></td>
-							<!-- ★★★★ value 로그인 가능하게되면 {$memberId} 로 할 예정 -->
-
+							<td width="150" style="font-weight:bold;">
+							<input  style="width:300px" type="text" id="memberId"
+								name="memberId" value="${id }"  readonly="readonly"></td>				
 						<tr>
 							<th style="text-align: center;">제목</th>
-							<td colspan="3"><input  style="width:300px" type="text" id="boardTitle"
-								name="boardTitle" required="required"></td>
+							<td colspan="3"><input  style="width:300px" type="text"
+								id="boardTitle" name="boardTitle" required="required"></td>
 						</tr>
-
 						<tr>
 							<th style="text-align: center;">내용</th>
 							<td colspan="3"><textarea  style="width:330px;" rows="10" cols="80"
 									id="boardContent" name="boardContent"></textarea></td>
 						</tr>
-
 						<tr>
 							<th style="text-align: center;">첨부파일</th>
 							<td><input type="file" id="file" name="file"></td>
 						</tr>
-						
 					</table>
-				</div>
-				<br>
+				</div><br>
 				<div>
 					<input type="hidden" id="boardRole" name="boardRole" value="N">
-					<input type="button" class="button black" value="뒤로가기" onclick="location.href='noticeSelectList.yd'">
+					<input type="button" class="button black" value="뒤로가기"
+							 onclick="location.href='noticeSelectList.yd'">
 					<input type="submit" class="button black" value="등록">&nbsp;&nbsp;&nbsp;
 				</div>
 				<br> <br>
 			</form>
-
+			
 		</div>
 	</div>
 

@@ -240,9 +240,13 @@ h6 {
 			<form id="frm" action="qnaSelect.yd" method="post">
 				<input type="hidden" id="id" name="id">
 				<input type="hidden" id="role" name="role">
-			<c:if test="${not empty id && author eq '회원'}">	
-				<button type="button" class="button rosy " onclick="location.href='qnaWriteForm.yd'" style="float: right">글쓰기</button>
+				
+				<c:if test="${not empty id && author eq '회원'}">	
+					<button type="button" class="button rosy " 
+						onclick="location.href='qnaWriteForm.yd'" 
+						style="float: right">글쓰기</button>
 				</c:if> 
+			
 			</form>
 		</div>
 							</table>
@@ -296,19 +300,23 @@ h6 {
 		
 		<script type="text/javascript">
 	
-	function selectQna(mId,bId,role) { /* 변수 값으로 작성자id,글번호,글분류 를 받는다. */
+	 /* 본인 글만 조회할 수 있게 하는 함수 */
 		
-		 var auth = '<%=(String)session.getAttribute("author")%>'; /* 로그인유저의 권한 */
-		 var lId = '<%=(String)session.getAttribute("id")%>';  /* 로그인유저의 아이디 */
+		function selectQna(mId,bId,role) { 
+		// 함수의 매개 변수 값으로 ID,글번호,글분류 를 받는다.
+			
+		// 로그인 유저의 권한과 아이디
+		 var auth = '<%=(String)session.getAttribute("author")%>'; 
+		 var lId = '<%=(String)session.getAttribute("id")%>';  
 		 
-		if(auth=="관리자" || lId==mId){ 
-			 document.getElementById("id").value=bId;
-			 document.getElementById("role").value=role;		
-			frm.submit();} 
-		else {
-			alert("본인 글만 조회가능합니다!");
+			if(auth=="관리자" || lId==mId){ 
+				 document.getElementById("id").value=bId;
+				 document.getElementById("role").value=role;		
+				frm.submit();} 
+			else {
+				alert("본인 글만 조회가능합니다!");
+			}
 		}
-	}
 	
 	function checkSelectAll()  {
 		  

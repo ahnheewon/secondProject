@@ -33,7 +33,8 @@ public class BoardInsert implements Command {
 		
 		try {
 			MultipartRequest multi = 
-				new MultipartRequest(request, saveFolder, maxSize, charactSet, new DefaultFileRenamePolicy());
+				new MultipartRequest(request, saveFolder, maxSize, charactSet
+											, new DefaultFileRenamePolicy());
 			//파일 저장
 			
 			filename = multi.getFilesystemName("file"); // 물리적위치에 파일 저장

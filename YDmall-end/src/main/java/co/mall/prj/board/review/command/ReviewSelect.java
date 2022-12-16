@@ -16,14 +16,15 @@ public class ReviewSelect implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		// 게시글 상세보기 및 덧글 리스트(완성)
+		
+		// 게시글 상세보기 및 덧글 리스트
 
 		BoardService dao = new BoardServiceImpl();
-		BoardVO vo = new BoardVO();
-		BoardVO re = new BoardVO();
+		BoardVO vo = new BoardVO(); // 글 VO
+		BoardVO re = new BoardVO(); // 덧글 VO
 		List <BoardVO> replyList = new  ArrayList<BoardVO>();
 		
-		vo.setBoardId(Integer.valueOf(request.getParameter("bId"))); // String을 int로 변환.
+		vo.setBoardId(Integer.valueOf(request.getParameter("bId")));
 		vo.setBoardRole(request.getParameter("role"));
 		
 		re.setBoardReplyTo(Integer.valueOf(request.getParameter("bId")));

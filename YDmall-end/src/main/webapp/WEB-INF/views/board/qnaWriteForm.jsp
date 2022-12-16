@@ -154,15 +154,18 @@ h4 {
 						<tr>
 							<th style="text-align: center;">제목</th>
 							<td colspan="3">
-							<input  style="width:300px" type="hidden" id="boardTitle" name="boardTitle" required="required">
-								<select name="selectQna" id="selectQna">
-								<option value="상품" selected>주문 결제 문의</option>
-								<option value="배송">배송 안내 문의</option>
-								<option value="교환">교환 및 반품 문의</option>
-								<option value="배송">상품 관련 문의</option>
-								<option value="기타">기타 문의</option>
+							
+							<input type="hidden" id="boardTitle" name="boardTitle" >
+								<select name="selectQna" id="selectQna" required="required">
+									<option value="" selected>선택되지 않음</option>
+									<option value="주문">주문 결제 문의</option>
+									<option value="배송">배송 안내 문의</option>
+									<option value="교환">교환 및 반품 문의</option>
+									<option value="배송">상품 관련 문의</option>
+									<option value="기타">기타 문의</option>
 								</select>
-								</td>
+							
+							</td>
 						</tr>
 
 						<tr>
@@ -193,12 +196,13 @@ h4 {
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
 
-// 질문 제목 입력방식 선택
-$('#selectQna').change(function(){
-   $("#selectQna option:selected").each(function () {
-			 $("#boardTitle").val($(this).text()); //선택된 값 입력	
-   });
-});
+	// 질문 제목 입력방식 선택
+	$('#selectQna').change(function(){
+	   $("#selectQna option:selected").each(function () {
+				 $("#boardTitle").val($(this).text()); //선택된 값 입력	
+	   });
+	});
+
 </script>
 
 </body>

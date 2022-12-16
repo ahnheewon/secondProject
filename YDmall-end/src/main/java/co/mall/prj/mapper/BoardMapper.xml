@@ -7,8 +7,9 @@
 		resultType="co.mall.prj.board.service.BoardVO">
 		
 	  	SELECT
-		BOARD_ID,MEMBER_ID,TO_CHAR(BOARD_DATE,'YY-MM-DD') AS BOARD_DATE,BOARD_TITLE,BOARD_CONTENT,BOARD_HIT,BOARD_ATTACH,
-		BOARD_ATTACH_DIR,BOARD_ROLE
+			BOARD_ID,MEMBER_ID,BOARD_TITLE,BOARD_CONTENT
+			,TO_CHAR(BOARD_DATE,'YY-MM-DD') AS BOARD_DATE
+			,BOARD_HIT,BOARD_ATTACH,BOARD_ATTACH_DIR,BOARD_ROLE
 		FROM BOARD
 		WHERE BOARD_ROLE='N' <!-- Notice - N으로 분류했음. -->
 		AND BOARD_ID IS NOT NULL
@@ -74,20 +75,24 @@
 	</select>
 
 
-	<insert id="boardInsert"  parameterType="co.mall.prj.board.service.BoardVO">
+	<insert id="boardInsert" 
+			parameterType="co.mall.prj.board.service.BoardVO">
 		<selectKey keyProperty="boardId" resultType="int"
 			order="BEFORE">
 			SELECT 
-			CASE WHEN MAX(BOARD_ID) IS NULL THEN 1 
-			ELSE MAX(BOARD_ID) + 1 END AS ID
+				CASE WHEN MAX(BOARD_ID) IS NULL THEN 1 
+				ELSE MAX(BOARD_ID) + 1 END AS ID
 			FROM BOARD
 			WHERE BOARD_ROLE = #{boardRole}
 		</selectKey>
-		
+	
 		INSERT INTO BOARD 
 		VALUES
-		(#{boardId},#{memberId},SYSDATE,#{boardTitle},#{boardContent},0,#{boardAttach},#{boardAttachDir},#{boardRole},'')
-		
+		(#{boardId},#{memberId},SYSDATE
+		,#{boardTitle},#{boardContent},0
+		,#{boardAttach},#{boardAttachDir}
+		,#{boardRole},'')		
+	
 	</insert>
 	
 	<insert id="replyInsert"  parameterType="co.mall.prj.board.service.BoardVO">
@@ -137,8 +142,8 @@
 		AND BOARD_ID > #{boardId}
 	</update>
 
-
-	<update id="boardHitUpdate"> <!-- 조회수 증가 -->
+	<!-- 조회수 증가 -->
+	<update id="boardHitUpdate"> 
 	
 		UPDATE BOARD
 		SET BOARD_HIT = BOARD_HIT + 1
