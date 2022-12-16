@@ -15,8 +15,8 @@ import co.mall.prj.board.service.BoardVO;
 import co.mall.prj.common.Command;
 
 public class BoardInsert implements Command {
-	private String saveFolder = "C:\\Dev"; //실제 파일이 저장되는 공간.
-	//private String saveFolder = "C:\\Users\\admin\\git\\secondProject\\YDmall\\src\\main\\webapp\\img\\resources"; //실제 파일이 저장되는 공간.
+	
+	private String saveFolder = "C:\\Users\\Administrator\\git\\secondProject2\\YDmall-end\\src\\main\\webapp\\img\\product-img"; //실제 파일이 저장되는 공간.	
 	private String charactSet = "utf-8"; // 한글깨짐 방지
 	private int maxSize = 1024*1024*1024; // 업로드할 파일 최대 사이즈.
 	

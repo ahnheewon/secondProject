@@ -314,14 +314,14 @@ h4 {
 		
 	}
 	
-		function subCall(str) {
+	function subCall(str) {
 			if (str == 'E') {
 				frm.action = "boardEditForm.yd"; //수정
 			} else if (str == 'D'){
 				frm.action = "boardDelete.yd"; //삭제
 			}
 			frm.submit();
-		}
+	}
 		
 		function replyDelete(id, date) {
 			document.getElementById("rmId").value = id;

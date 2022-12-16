@@ -92,7 +92,7 @@
 	
 	<insert id="replyInsert"  parameterType="co.mall.prj.board.service.BoardVO">
 		
-		INSERT INTO BOARD 
+		INSERT INTO BOARD
 		VALUES
 		('',#{memberId},SYSDATE,'',#{boardContent},0,'','',#{boardRole},#{boardReplyTo}) 
 		
